@@ -21,6 +21,7 @@ unsafe_code = "deny"
 [features]
 default = ["postgres", "sqlite"]
 sqlite = ["dep:rusqlite", "dep:bb8"]
+sqlite-bundled = ["sqlite", "rusqlite/bundled"]
 postgres = ["dep:tokio-postgres", "dep:bb8"]
 typed-postgres = ["postgres"] # compatibility alias; typed API is always on when postgres is enabled
 mssql = ["dep:tiberius", "dep:futures-util", "dep:bb8-tiberius", "dep:bb8"]
@@ -31,11 +32,11 @@ benchmarks = ["dep:criterion", "dep:rand", "dep:rand_chacha"]
 [dependencies]
 # checked Sept 2025
 # `cargo stale`
-tokio = { version = "1", features = ["full"] }  
+tokio = { version = "1", features = ["full"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 tokio-postgres = { version = "0", features = ["with-chrono-0_4", "with-serde_json-1"], optional = true }
-chrono = {version = "0", features = ["serde"] }
+chrono = { version = "0", features = ["serde"] }
 regex = "1"
 clap = { version = "4", features = ["derive"] }
 
