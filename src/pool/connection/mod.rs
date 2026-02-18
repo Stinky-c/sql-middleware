@@ -1,5 +1,6 @@
 mod mssql;
 mod postgres;
+#[cfg(feature = "sqlite")]
 mod sqlite;
 mod turso;
 
